@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<title>Resume Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<style>
+  html, body, h1, h2, h3, h4, h5, h6 {
+    font-family: "Roboto", sans-serif;
+  }
+
+  body {
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    transform: rotate(0deg);
+    transform-origin: 0 0;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .row-padding::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .third {
+    width: 33.33%;
+    float: left;
+    padding: 20px;
+    height: 100%;
+  }
+
+  .white {
+    background-color: #fff;
+  }
+
+  .card-4 {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  h4 {
+    font-weight: bold;
+  }
+
+  i.fa {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+  }
+
+  .large {
+    font-size: 18px;
+  }
+
+  .text-theme {
+    color: #4CAF50;
+  }
+
+  .padding-16 {
+    padding: 16px;
+  }
+
+  .xxlarge {
+    font-size: 24px;
+  }
+
+  .margin-right {
+    margin-right: 10px;
+  }
+
+  .text-teal {
+    color: #00897B;
+  }
+
+  .tag.teal.round {
+    background-color: #00897B;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .light-grey {
+    background-color: #f1f1f1;
+  }
+
+  .round-xlarge {
+    border-radius: 16px;
+  }
+
+  .small {
+    font-size: 14px;
+  }
+</style>
+<body class="light-grey">
+  <div class="container">
+    <div class="row-padding">
+      <div class="third">
+        <div class="white card-4">
+          <div class="container">
+            <h4> <%= resume.name %> </h4>
+            <p><i class="fa fa-briefcase fa-fw margin-right large text-teal"></i><%= resume.occupation %></p>
+            <p><i class="fa fa-envelope fa-fw margin-right large text-teal"></i><%= user.email %></p>
+            <p><i class="fa fa-phone fa-fw margin-right large text-teal"></i><%= resume.phone %></p>
+            <hr>
+            <p class="large"><b><i class="fa fa-asterisk fa-fw margin-right text-teal"></i>Skills</b></p>
+            <% puts resume %>
+            <% puts skills %>
+            <ul>
+              <% resume.skills.each do |skill| %>
+                <li><%= skill.skill_name %></li>
+                <li><%= skill.proficiency %></li>
+              <% end %>
+            </ul>
+            <br>
+            <p class="large text-theme"><b><i class="fa fa-globe fa-fw margin-right text-teal"></i>Languages</b></p>
+            <ul>
+              <% resume.languages.each do |language| %>
+                <li><%= language.language_name %></li>
+                <li><%= language.proficiency %></li>
+              <% end %>
+            </ul>
+            <br>
+          </div>
+        </div>
+        <br>
+      </div>
+      <div class="twothird">
+        <div class="container card-4 white margin-bottom">
+          <h2 class="text-grey padding-16"><i class="fa fvvqs sdsdc a-suitcase fa-fw margin-right xxlarge text-teal"></i>Work Experience</h2>
+          <div class="container">
+            <% resume.experiences.each do |experience| %>
+              <h5 class="opacity"><b><%= experience.job_title %> - <%= experience.company %></b></h5>
+              <h6 class="text-teal">
+                <i class="fa fa-calendar fa-fw margin-right"></i><%= experience.start_date %> - 
+                <span class="tag teal round"><%= experience.end_date %></span>
+              </h6>
+              <p><%= experience.description %></p>
+              <hr>
+            <% end %>
+          </div>
+        </div>
+        <div class="container card-4 white">
+          <h2 class="text-grey padding-16"><i class="fa fa-certificate fa-fw margin-right xxlarge text-teal"></i>Education</h2>
+          <div class="container">
+            <% resume.educations.each do |education| %>
+              <h5 class="opacity"><b><%= education.institution %></b></h5>
+              <h6 class="text-teal">
+                <i class="fa fa-calendar fa-fw margin-right"></i><%= education.tenure %>
+              </h6>
+              <p><%= education.degree %></p>
+              <hr>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="container teal center margin-top">
+  </footer>
+</body>
+</html>
